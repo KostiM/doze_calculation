@@ -15,71 +15,83 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    if(ui->radioButton_2->isChecked())
+  QXlsx::Document xlsx(fileName);
+  sheetName = ui->comboBox->currentText();
+  xlsx.selectSheet(sheetName);
+  depth = ui->spinBox->text().toInt();
+  dose = ui->doubleSpinBox->text().toDouble();
+  Cell D = *xlsx.cellAt(depth+7,6);
+  doseRate = D.value().toDouble();
+  duration = dose/doseRate;
+  durationM = duration;
+  Cell S = *xlsx.cellAt(7,6);
+  skinDoseRate = S.value().toDouble();
+  skinDose = duration*skinDoseRate;
+  ui->DurationM->setText(QString::number(durationM));
+  ui->DurationS->setText(QString::number((duration-durationM)*60));
+  ui->SkinDose->setText(QString::number(skinDose));
+
+}
+
+void MainWindow::on_RB140_clicked()
+{
+    fileName = "../doze_calculation/dose calculation 140keV.xlsx";
+    QXlsx::Document xlsx(fileName);
+
+    int countSheets = xlsx.sheetNames().size();
+
+    ui->comboBox->clear();
+
+    for(int i = 0; i< countSheets; i++)
     {
-        QXlsx::Document xlsx("../doze_calculation/dose calculation 140keV_true.xlsx");
-
-        //xlsx.selectSheet("4x4");
-
-        qDebug() << xlsx.sheetNames();
-
-        int row = xlsx.dimension().lastRow();
-        int col = xlsx.dimension().lastColumn();
-        qDebug() << "row = " << row << " " << " col = " << col;
-
-        qDebug()<<xlsx.read("A10");
-        qDebug()<<xlsx.read("B10");
-        qDebug()<<xlsx.read("C10");
+        ui->comboBox->addItem(xlsx.sheetNames().takeAt(i));
     }
-    else if (ui->radioButton_4->isChecked())
+}
+
+void MainWindow::on_RB180_clicked()
+{
+    fileName = "../doze_calculation/dose calculation 180keV.xlsx";
+
+    QXlsx::Document xlsx(fileName);
+
+    int countSheets = xlsx.sheetNames().size();
+
+    ui->comboBox->clear();
+
+    for(int i = 0; i< countSheets; i++)
     {
-        QXlsx::Document xlsx("../doze_calculation/dose calculation 180keV_true.xlsx");
-
-        //xlsx.selectSheet("4x4");
-
-        qDebug() << xlsx.sheetNames();
-
-        int row = xlsx.dimension().lastRow();
-        int col = xlsx.dimension().lastColumn();
-        qDebug() << "row = " << row << " " << " col = " << col;
-
-        qDebug()<<xlsx.read("A10");
-        qDebug()<<xlsx.read("B10");
-        qDebug()<<xlsx.read("C10");
-
+        ui->comboBox->addItem(xlsx.sheetNames().takeAt(i));
     }
-    else if (ui->radioButton->isChecked())
+}
+
+void MainWindow::on_RB200_clicked()
+{
+    fileName = "../doze_calculation/dose calculation 200keV.xlsx";
+
+    QXlsx::Document xlsx(fileName);
+
+    int countSheets = xlsx.sheetNames().size();
+
+    ui->comboBox->clear();
+
+    for(int i = 0; i< countSheets; i++)
     {
-        QXlsx::Document xlsx("../doze_calculation/dose calculation 200keV_true.xlsx");
-
-        //xlsx.selectSheet("4x4");
-
-        qDebug() << xlsx.sheetNames();
-
-        int row = xlsx.dimension().lastRow();
-        int col = xlsx.dimension().lastColumn();
-        qDebug() << "row = " << row << " " << " col = " << col;
-
-        qDebug()<<xlsx.read("A10");
-        qDebug()<<xlsx.read("B10");
-        qDebug()<<xlsx.read("C10");
-
+        ui->comboBox->addItem(xlsx.sheetNames().takeAt(i));
     }
-    else if (ui->radioButton_3->isChecked())
+}
+
+void MainWindow::on_RB220_clicked()
+{
+    fileName = "../doze_calculation/dose calculation 220keV.xlsx";
+
+    QXlsx::Document xlsx(fileName);
+
+    int countSheets = xlsx.sheetNames().size();
+
+    ui->comboBox->clear();
+
+    for(int i = 0; i< countSheets; i++)
     {
-        QXlsx::Document xlsx("../doze_calculation/dose calculation220keV_true.xlsx");
-
-        //xlsx.selectSheet("4x4");
-
-        qDebug() << xlsx.sheetNames();
-
-        int row = xlsx.dimension().lastRow();
-        int col = xlsx.dimension().lastColumn();
-        qDebug() << "row = " << row << " " << " col = " << col;
-
-        qDebug()<<xlsx.read("A10");
-        qDebug()<<xlsx.read("B10");
-        qDebug()<<xlsx.read("C10");
-
+        ui->comboBox->addItem(xlsx.sheetNames().takeAt(i));
     }
 }
