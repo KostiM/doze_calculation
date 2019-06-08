@@ -9,7 +9,7 @@ XLSX_NO_LIB
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 3): QT += widgets
 
 TARGET = untitled2
 TEMPLATE = app

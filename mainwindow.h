@@ -12,7 +12,7 @@
 #include <QVariant>
 #include <QMainWindow>
 
-using namespace QXlsx;
+//using namespace QXlsx;
 
 namespace Ui {
 class MainWindow;
@@ -48,6 +48,9 @@ private:
     double doseRate;
     double skinDoseRate;
     int durationM;
+
+    /*Common function for .xlsx reading*/
+    void init(QString const& fileName);
 };
 
 #endif // MAINWINDOW_H
