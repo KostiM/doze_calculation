@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/files">
+        <file>dose calculation 140keV.xlsx</file>
+        <file>dose calculation 180keV.xlsx</file>
+        <file>dose calculation 200keV.xlsx</file>
+        <file>dose calculation 220keV.xlsx</file>
+        <file>radioactive.png</file>
+    </qresource>
+</RCC>

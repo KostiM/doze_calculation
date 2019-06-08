@@ -7,10 +7,12 @@
 #include "xlsxchart.h"
 #include "xlsxrichstring.h"
 #include "xlsxworkbook.h"
+//#include <resources.qrc>
 
 #include <QDebug>
 #include <QVariant>
 #include <QMainWindow>
+#include <QFile>
 
 //using namespace QXlsx;
 

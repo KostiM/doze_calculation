@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
     /*Set the first file as initial*/
     ui->RB140->click();
 }
@@ -16,6 +17,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -47,31 +49,34 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_RB140_clicked()
 {
-    fileName = "../doze_calculation/dose calculation 140keV.xlsx";
+    fileName = ":/files/dose calculation 140keV.xlsx";
     init(fileName);
 }
 
 void MainWindow::on_RB180_clicked()
 {
-    fileName = "../doze_calculation/dose calculation 180keV.xlsx";
+    fileName = ":/files/dose calculation 180keV.xlsx";
     init(fileName);
 }
 
 void MainWindow::on_RB200_clicked()
 {
-    fileName = "../doze_calculation/dose calculation 200keV.xlsx";
+    fileName = ":/files/dose calculation 200keV.xlsx";
     init(fileName);
 }
 
 void MainWindow::on_RB220_clicked()
 {
-    fileName = "../doze_calculation/dose calculation 220keV.xlsx";
+    fileName = ":/files/dose calculation 220keV.xlsx";
     init(fileName);
 }
 
 void MainWindow::init(const QString &fileName)
 {
     QXlsx::Document xlsx(fileName);
+    QPixmap myPixmap(":/files/radioactive.png" );
+
+    ui->label_2->setPixmap( myPixmap );
 
     int countSheets = xlsx.sheetNames().size();
     ui->comboBox->clear();
