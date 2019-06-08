@@ -7,12 +7,14 @@
 #include "xlsxchart.h"
 #include "xlsxrichstring.h"
 #include "xlsxworkbook.h"
+//#include <resources.qrc>
 
 #include <QDebug>
 #include <QVariant>
 #include <QMainWindow>
+#include <QFile>
 
-using namespace QXlsx;
+//using namespace QXlsx;
 
 namespace Ui {
 class MainWindow;
@@ -48,6 +50,9 @@ private:
     double doseRate;
     double skinDoseRate;
     int durationM;
+
+    /*Common function for .xlsx reading*/
+    void init(QString const& fileName);
 };
 
 #endif // MAINWINDOW_H
