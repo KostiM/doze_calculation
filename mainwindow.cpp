@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->pushButton->setFocus();
 
     /*Set the first file as initial*/
     ui->RB140->click();
